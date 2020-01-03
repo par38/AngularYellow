@@ -1,0 +1,128 @@
+<h1 class="card-title yellow">Gilets Jaunes : organisons-nous !</h1>
+<div class="row">
+
+  <div class="col-sm-12 col-md-4">
+    <div class="card blue darken-4">
+      <div class="card-content white-text">
+        <h6 class="card-title">Veux-tu ajouter un nouveau membre ou en corriger un déjà existant ? </h6>
+
+        <form #formContent="ngForm" (ngSubmit)="onSubmit(formContent)">
+
+          <div class="form-group">
+
+            <!-- ****************** hidden field : allow the PUT to know the _id **** -->
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="memberService.selectedMember._id"
+              class="form-control">
+
+            <div class="form-group">
+              <label for="nom" class="white-text">Ton nom ou pseudo *</label>
+              <input type="text" class="form-control white-text" aria-describedby="nom" name="nom" #name="ngModel"
+                [(ngModel)]="memberService.selectedMember.nom" required>
+              <small id="nom" class="form-text text-muted">Comment souhaites-tu être connu ?</small>
+            </div>
+
+            <div class="form-group">
+              <label for="mail" class="white-text">Mail
+                *</label>
+              <input type="email" class="form-control white-text" aria-describedby="emailHelp" name="mail"
+                #name="ngModel" [(ngModel)]="memberService.selectedMember.mail" required>
+              <small id="emailHelp" class="form-text text-muted">L'adresse à laquelle tu recevras les
+                informations</small>
+            </div>
+
+            <div class="form-group">
+              <label for="ville" class="white-text">Ville</label>
+              <input type="text" class="form-control white-text" aria-describedby="ville" name="ville" #name="ngModel"
+                [(ngModel)]="memberService.selectedMember.ville">
+              <small id="ville" class="form-text text-muted">Où est-tu prêt à te mobiliser ?</small>
+            </div>
+
+            <div class="form-group">
+              <label for="age" class="white-text">Ton age</label>
+              <input type="text" class="form-control white-text" aria-describedby="age" name="age" #name="ngModel"
+                [(ngModel)]="memberService.selectedMember.age">
+              <small id="age" class="form-text text-muted">Plus ou moins jeune, tout le monde est utile !</small>
+            </div>
+
+
+            <div class="form-group">
+              <label for="famille" class="white-text">Ta famille</label>
+              <input type="text" class="form-control white-text" aria-describedby="famille" name="famille"
+                #name="ngModel" [(ngModel)]="memberService.selectedMember.famille">
+              <small id="famille" class="form-text text-muted">Ton groupe d'appartenance</small>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="exampleFormControlSelect1">Choisissez votre rôle</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>Casseur</option>
+                <option>Protection</option>
+                <option>Nourriture</option>
+              </select>
+            </div> -->
+
+            <button type="submit" class="btn btn-primary" [disabled]="formContent.invalid">Submit</button>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-sm-12 col-md-8">
+    <div class="card blue darken-4">
+      <div class="card-content white-text">
+
+        <table class="table white-text">
+
+          <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Mail</th>
+              <th scope="col">Ville</th>
+              <th scope="col">Age</th>
+              <th scope="col">Famille</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let memb of memberService.membersList">
+
+              <td>{{memb.nom}}</td>
+              <td>{{memb.mail}}</td>
+              <td>{{memb.ville}}</td>
+              <td>{{memb.age}}</td>
+              <td>{{memb.famille}}</td>
+
+              <td>
+                <a class="btn-floating btn-small waves-effect waves-light light-blue lighten-3 right"
+                  (click)="onEdit(memb)">
+                  <i class="material-icons">edit</i>
+                </a>
+              </td>
+
+              <td>
+                <a class="btn-floating btn-small waves-effect waves-light deep-orange lighten-3 right"
+                  (click)="onDelete(memb._id)">
+                  <i class="material-icons">delete</i>
+                </a>
+
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</div>
