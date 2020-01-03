@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port=4350",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,7 +19,11 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "bootstrap": "^4.4.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^5.8.3",
     "rxjs": "~6.4.0",
+    "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
